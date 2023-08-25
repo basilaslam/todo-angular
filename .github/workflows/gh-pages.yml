@@ -28,7 +28,7 @@ jobs:
 
     - name: Deploy
       if: success()
-      uses: basilaslam/todo-angular@v3
+      uses: basilaslam/todo-angular
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: dist/angular-github-actions
