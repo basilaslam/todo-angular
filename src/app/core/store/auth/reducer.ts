@@ -1,7 +1,8 @@
 import { createReducer, on } from "@ngrx/store";
-import { User } from '../../models/user.interface';
 import * as UserActions from "./action";
-import { initialState } from "../../models/state.interface";
+import { initialState } from "src/app/shared/models/state.interface";
+import { User } from "src/app/shared/models/user.interface";
+
 
 
 export const userReducer = createReducer(

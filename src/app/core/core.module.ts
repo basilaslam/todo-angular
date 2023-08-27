@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './interceptors/http-interceptor.interceptor';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/auth/reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/auth/effects';
 
 
 
@@ -10,7 +14,9 @@ import { RouterModule } from '@angular/router';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    StoreModule.forRoot({user: userReducer}),
+    EffectsModule.forRoot([UserEffects])
   ],
   providers: [
   {

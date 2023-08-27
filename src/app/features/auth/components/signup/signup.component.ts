@@ -31,11 +31,10 @@ ngOnInit(){
 onSubmit(){
   if(this.signupForm.valid){
     this._authService.signUp(this.signupForm.value).subscribe(data => {
-      const {accessToken, refreshToken} = data.data
-      if(data.success){
-        saveToken(accessToken, refreshToken)
+      const accessToken  = data.token
+        saveToken(accessToken)
         this._router.navigate(["/login"])
-      }
+
     })
   }
 }

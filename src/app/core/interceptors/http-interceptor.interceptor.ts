@@ -19,20 +19,20 @@ export class AuthInterceptorService implements HttpInterceptor {
    if (token) {
      // If we have a token, we set it to the header
      request = request.clone({
-        setHeaders: {Authorization: `Authorization token ${token}`}
+      setHeaders: { token: token }
      });
   }else{
     this._router.navigate(["/auth/login"])
   }
 
   return next.handle(request).pipe(
-  	catchError((err) => {
-   	 if (err instanceof HttpErrorResponse) {
-       	 if (err.status === 401) {
-       	 // redirect user to the logout page
-     	}
- 	 }
-  	return throwError(err);
+  catchError((err) => {
+   if (err instanceof HttpErrorResponse) {
+      if (err.status === 401) {
+          this._router.navigate(["/auth/login"])
+    }
+}
+  return throwError(err);
 	})
    )
   }

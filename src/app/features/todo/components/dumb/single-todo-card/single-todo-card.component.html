@@ -1,0 +1,17 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div class="flex justify-between">
+  <input class="hidden" type="checkbox" id="task_6" checked />
+  <label class="flex h-10 cursor-pointer items-center rounded px-2 hover:bg-gray-900" for="task_6">
+    <button (click)="changeStatus()">
+
+      <span class="flex h-5 w-5 items-center justify-center rounded-full border-2 border-gray-500 text-transparent"
+        [ngClass]="{'selected': todo.isComplete, 'unselected': !todo.isComplete}">
+        <app-tick [isDone]="todo.isComplete" />
+      </span>
+    </button>
+    <span (click)="showModal()" class="ml-4 text-sm" [ngClass]="{'line-through': todo.isComplete}">{{todo.title}}</span>
+  </label>
+  <img (click)="deleteTodo()" class="w-5 h-5 cursor-pointer" src="https://img.icons8.com/?size=512&id=67884&format=png"
+    alt="">
+</div>

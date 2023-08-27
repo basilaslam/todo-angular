@@ -9,7 +9,7 @@ import { LoginInput, SignUpInput } from '../models/auth.interface';
   providedIn: 'any'
 })
 export class AuthService {
-  private URI = `${environment.URI}/users` as const
+  private URI = `${environment.AUTH_URI}` as const
   constructor(private _http: HttpClient) { }
 
 
@@ -21,6 +21,6 @@ export class AuthService {
   signUp(userData:SignUpInput): Observable<UserApiResponse>{
     userData.role = 'USER'
     console.log(userData)
-    return this._http.post<UserApiResponse>(`${this.URI}/register`,userData)
+    return this._http.post<UserApiResponse>(`${this.URI}/signup`,userData)
   }
 }

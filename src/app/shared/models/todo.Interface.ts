@@ -1,4 +1,4 @@
-export interface Root {
+export interface TodoApiResponse {
   data: Todo[]
   message: string
   statusCode: number
@@ -10,7 +10,20 @@ export interface Todo {
   _id: string
   createdAt: string
   description: string
-  isDone: boolean
+  isComplete: boolean
   title: string
   updatedAt: string
+}
+
+export interface SingleTodoApiResponse {
+  data: Todo
+  message: string
+  statusCode: number
+  success: boolean
+}
+
+
+export interface createTodoBody{
+  title: string;
+  description: string
 }

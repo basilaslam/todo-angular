@@ -29,9 +29,9 @@ ngOnInit(){
 onSubmit(){
   if(this.loginForm.valid){
    this._authService.login(this.loginForm.value).subscribe(data => {
-    const {accessToken, refreshToken} = data.data
+    const accessToken = data.token
 
-    saveToken(accessToken, refreshToken)
+    saveToken(accessToken)
     this._router.navigate(["/"])
    })
   }
